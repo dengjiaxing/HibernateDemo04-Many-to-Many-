@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2012-10-31 23:57:50 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="org.hibernate.entity.User" table="user">
+        <id name="userid" type="int" access="field">
+            <column name="userid" />
+            <generator class="identity" />
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="name" />
+        </property>
+        <property name="password" type="java.lang.String">
+            <column name="password" />
+        </property>
+        <set name="addresses" table="user_address" inverse="false" lazy="true" >
+            <key>
+                <column name="userid" />
+            </key>
+            <many-to-many class="org.hibernate.entity.Address" column="addressid"/>
+        </set>
+    </class>
+</hibernate-mapping>
